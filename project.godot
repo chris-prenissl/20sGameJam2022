@@ -14,9 +14,19 @@ config/name="20sGameJam2022"
 run/main_scene="res://Scenes/Level.tscn"
 config/icon="res://icon.png"
 
+[display]
+
+window/size/width=256
+window/size/height=224
+window/size/test_width=1024
+window/size/test_height=896
+window/stretch/mode="viewport"
+window/stretch/aspect="keep"
+
 [global]
 
 controls=false
+colis=false
 
 [gui]
 
@@ -107,6 +117,13 @@ shoot={
  ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemy"
+2d_physics/layer_3="Walls"
+2d_physics/layer_4="Objects"
+
 [mono]
 
 project/assembly_name="20sGameJam2022"
@@ -117,4 +134,5 @@ common/enable_pause_aware_picking=true
 
 [rendering]
 
+2d/snapping/use_gpu_pixel_snap=true
 environment/default_environment="res://default_env.tres"
