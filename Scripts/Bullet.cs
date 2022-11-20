@@ -4,8 +4,10 @@ namespace TwentySecondGameJam2022.Scripts
 {
     public class Bullet : Area2D
     {
-        [Export] public float MaxRange = 1200;
-        [Export] public float Speed = 750;
+        private int _maxRange = 1200;
+        private int _speed = 750;
+
+        private uint _ownerLayer;
         
         private float _travelledDistance;
 
@@ -16,20 +18,27 @@ namespace TwentySecondGameJam2022.Scripts
 
         public override void _PhysicsProcess(float delta)
         {
-            var distance = Speed * delta;
-            var motion = Transform.x * Speed * delta;
+            var distance = _speed * delta;
+            var motion = Transform.x * _speed * delta;
 
             Position += motion;
             _travelledDistance += distance;
-            if (_travelledDistance > MaxRange)
+            if (_travelledDistance > _maxRange)
             {
                 QueueFree();
             }
         }
 
+        public void Init(uint ownerLayer, int speed, int maxRange)
+        {
+            _ownerLayer = ownerLayer;
+            _speed = speed;
+            _maxRange = maxRange;
+        }
+
         public void OnBulletHit(Area2D area)
         {
-            if (area.CollisionLayer != 1)
+            if (area.CollisionLayer != _ownerLayer)
             {
                 QueueFree();
             }

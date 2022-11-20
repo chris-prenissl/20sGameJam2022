@@ -63,6 +63,7 @@ namespace TwentySecondGameJam2022.Scripts
             var bullet = (Bullet) Bullet.Instance();
             GetTree().Root.AddChild(bullet);
             bullet.Position = Position;
+            bullet.Init(CollisionLayer, 800, 1200);
             bullet.LookAt(_shootingIndicator.GlobalPosition);
         }
 

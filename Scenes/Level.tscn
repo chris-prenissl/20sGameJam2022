@@ -1,9 +1,10 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Scripts/Level.cs" type="Script" id=1]
 [ext_resource path="res://Scenes/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Art/Tilesets/TX Tileset Grass.png" type="Texture" id=3]
 [ext_resource path="res://Art/Tilesets/TX Tileset Wall.png" type="Texture" id=4]
+[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "grass_floor"
@@ -624,3 +625,6 @@ position = Vector2( 244, 450 )
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
+
+[node name="Enemy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 248, 203 )
