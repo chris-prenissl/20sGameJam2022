@@ -11,18 +11,26 @@ namespace TwentySecondGameJam2022.Scripts
         [Export] public int BulletMaxRange = 1200;
         [Export] public PackedScene Bullet;
 
+        [Export] public NodePath HitDetectionAreaPath;
+        [Export] public NodePath LookingDirectionSpritePath;
+        [Export] public NodePath HealthBarPath;
+
         private Player _player;
         private Area2D _hitDetectionArea;
         private Sprite _lookingDirectionIndicator;
+        private HealthBar _healthBar;
 
         private float _currentTimeToShoot;
         
         public override void _Ready()
         {
-            _player = (Player) GetTree().CurrentScene.FindNode("Player");
-            _hitDetectionArea = GetNode<Area2D>("HitDetectionArea");
-            _lookingDirectionIndicator = GetNode<Sprite>("LookingDirectionSprite");
+            _player = (Player) GetTree().CurrentScene.FindNode(nameof(Player));
             
+            _hitDetectionArea = GetNode<Area2D>(HitDetectionAreaPath);
+            _lookingDirectionIndicator = GetNode<Sprite>(LookingDirectionSpritePath);
+            _healthBar = GetNode<HealthBar>(HealthBarPath);
+            
+            _healthBar.SetMaxHealth(Health);
             _currentTimeToShoot = ShootInterval;
 
             _hitDetectionArea.Connect("area_entered", this, nameof(Hit));
@@ -59,7 +67,7 @@ namespace TwentySecondGameJam2022.Scripts
 
             if (bullet.OwnerLayer == CollisionLayer) return;
             
-            Health--;
+            _healthBar.SetHealth(--Health);
             bullet.QueueFree();
             
             if (Health <= 0)
