@@ -5,27 +5,33 @@ namespace TwentySecondGameJam2022.Scripts
     public class Enemy : KinematicBody2D
     {
         [Export] public float ShootInterval;
+        [Export] public float LookingIndicatorDistance = 30;
         [Export] public PackedScene Bullet;
 
         private Player _player;
+        private Sprite _lookingDirectionIndicator;
 
-        private float _currentTimeToSpawn;
+        private float _currentTimeToShoot;
         
         public override void _Ready()
         {
             _player = (Player) GetTree().CurrentScene.FindNode("Player");
-            _currentTimeToSpawn = ShootInterval;
+            _lookingDirectionIndicator = GetNode<Sprite>("LookingDirectionSprite");
+            
+            _currentTimeToShoot = ShootInterval;
         }
 
         public override void _Process(float delta)
         {
-            if (_currentTimeToSpawn <= 0)
+            if (_currentTimeToShoot <= 0)
             {
                 ShootBullet();
-                _currentTimeToSpawn = ShootInterval;
+                _currentTimeToShoot = ShootInterval;
             }
 
-            _currentTimeToSpawn = Mathf.Max(_currentTimeToSpawn - delta, 0);
+            _lookingDirectionIndicator.Position = Position.DirectionTo(_player.GlobalPosition) * LookingIndicatorDistance;
+
+            _currentTimeToShoot = Mathf.Max(_currentTimeToShoot - delta, 0);
         }
 
         private void ShootBullet()
