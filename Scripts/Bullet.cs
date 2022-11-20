@@ -7,13 +7,13 @@ namespace TwentySecondGameJam2022.Scripts
         private int _maxRange = 1200;
         private int _speed = 750;
 
-        private uint _ownerLayer;
+        public uint OwnerLayer;
         
         private float _travelledDistance;
 
         public override void _Ready()
         {
-            Connect("body_entered", this, nameof(OnBulletHit));
+            Connect("body_entered", this, nameof(HitWall));
         }
 
         public override void _PhysicsProcess(float delta)
@@ -31,17 +31,14 @@ namespace TwentySecondGameJam2022.Scripts
 
         public void Init(uint ownerLayer, int speed, int maxRange)
         {
-            _ownerLayer = ownerLayer;
+            OwnerLayer = ownerLayer;
             _speed = speed;
             _maxRange = maxRange;
         }
 
-        public void OnBulletHit(Area2D area)
+        public void HitWall(Node body)
         {
-            if (area.CollisionLayer != _ownerLayer)
-            {
-                QueueFree();
-            }
+            QueueFree();
         }
     }
 }

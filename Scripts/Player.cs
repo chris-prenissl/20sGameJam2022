@@ -8,6 +8,8 @@ namespace TwentySecondGameJam2022.Scripts
         [Export] public int DashSpeed = 400;
         [Export] public float DashTime = 0.5f;
         [Export] public float DashCoolDownTime = 1;
+        [Export] public int BulletSpeed = 800;
+        [Export] public int BulletMaxRange = 1200;
         [Export] public PackedScene Bullet;
         [Export] public float ShootingIndicatorDistance;
 
@@ -63,7 +65,7 @@ namespace TwentySecondGameJam2022.Scripts
             var bullet = (Bullet) Bullet.Instance();
             GetTree().Root.AddChild(bullet);
             bullet.Position = Position;
-            bullet.Init(CollisionLayer, 800, 1200);
+            bullet.Init(CollisionLayer, BulletSpeed, BulletMaxRange);
             bullet.LookAt(_shootingIndicator.GlobalPosition);
         }
 
