@@ -5,12 +5,17 @@ namespace TwentySecondGameJam2022.Scripts
     public class Player : KinematicBody2D
     {
         [Export] public int Speed = 200;
+        [Export] public int DashSpeed = 400;
+        [Export] public float DashTime = 0.5f;
+        [Export] public float DashCoolDownTime = 1;
         [Export] public PackedScene Bullet;
         [Export] public float ShootingIndicatorDistance;
 
         private Sprite _shootingIndicator;
 
         private Vector2 _velocity;
+        private float _currentDashWaitingTime;
+        private float _currentDashTime;
 
         public override void _Ready()
         {
@@ -19,20 +24,37 @@ namespace TwentySecondGameJam2022.Scripts
 
         public override void _PhysicsProcess(float delta)
         {
-            _velocity.y = Input.GetAxis("move_up", "move_down");
-            _velocity.x = Input.GetAxis("move_left", "move_right");
-            _velocity = _velocity.Normalized() * Speed;
-
+            if (_currentDashTime <= 0)
+            {
+                _velocity.y = Input.GetAxis("move_up", "move_down");
+                _velocity.x = Input.GetAxis("move_left", "move_right");
+                _velocity = _velocity.Normalized() * Speed;
+            }
+            
             _shootingIndicator.Position = Position.DirectionTo(GetGlobalMousePosition()) * ShootingIndicatorDistance;
             
             _velocity = MoveAndSlide(_velocity);
+
+            if (_currentDashTime > 0)
+            {
+                var destinationValue = _velocity.Normalized() * Speed;
+                _velocity = _velocity.LinearInterpolate(destinationValue, delta);
+                _currentDashTime = Mathf.Max(_currentDashTime - delta, 0);
+            }
+
+            _currentDashWaitingTime = Mathf.Max(_currentDashWaitingTime - delta, 0);
         }
 
         public override void _Input(InputEvent @event)
         {
-            if (@event.IsActionPressed("shoot"))
+            if (_currentDashTime <= 0 && @event.IsActionPressed("shoot"))
             {
                 ShootBullet();
+            }
+
+            if (_currentDashWaitingTime <= 0 && @event.IsActionPressed("dash"))
+            {
+                Dash();
             }
         }
 
@@ -42,6 +64,13 @@ namespace TwentySecondGameJam2022.Scripts
             GetTree().Root.AddChild(bullet);
             bullet.Position = Position;
             bullet.LookAt(_shootingIndicator.GlobalPosition);
+        }
+
+        private void Dash()
+        {
+            _velocity = _velocity.Normalized() * DashSpeed;
+            _currentDashTime = DashTime;
+            _currentDashWaitingTime = DashTime + DashCoolDownTime;
         }
     }
 }

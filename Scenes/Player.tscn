@@ -20,6 +20,8 @@ unique_name_in_owner = true
 collision_mask = 6
 script = ExtResource( 2 )
 Speed = 350
+DashSpeed = 1350
+DashTime = 0.2
 Bullet = ExtResource( 3 )
 ShootingIndicatorDistance = 40.0
 
