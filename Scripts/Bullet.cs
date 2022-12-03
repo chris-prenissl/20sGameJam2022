@@ -2,24 +2,24 @@ using Godot;
 
 namespace TwentySecondGameJam2022.Scripts
 {
-    public class Bullet : Area2D
+    public partial class Bullet : Area2D
     {
         private int _maxRange = 1200;
         private int _speed = 750;
 
         public uint OwnerLayer;
         
-        private float _travelledDistance;
+        private double _travelledDistance;
 
         public override void _Ready()
         {
-            Connect("body_entered", this, nameof(HitWall));
+            Connect("body_entered",new Callable(this,nameof(HitWall)));
         }
 
-        public override void _PhysicsProcess(float delta)
+        public override void _PhysicsProcess(double delta)
         {
             var distance = _speed * delta;
-            var motion = Transform.x * _speed * delta;
+            var motion = Transform.x * _speed * (float) delta;
 
             Position += motion;
             _travelledDistance += distance;

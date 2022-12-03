@@ -2,7 +2,7 @@ using Godot;
 
 namespace TwentySecondGameJam2022.Scripts
 {
-    public class Enemy : KinematicBody2D
+    public partial class Enemy : CharacterBody2D
     {
         private enum EnemyState
         {
@@ -25,33 +25,33 @@ namespace TwentySecondGameJam2022.Scripts
         [Export] public NodePath HealthBarPath;
 
         private Player _player;
-        private AnimatedSprite _bodySprite;
+        private AnimatedSprite2D _bodySprite;
         private Area2D _hitDetectionArea;
-        private Sprite _lookingDirectionIndicator;
+        private Sprite2D _lookingDirectionIndicator;
         private HealthBar _healthBar;
 
         private EnemyState _state;
-        private Vector2 _velocity;
         private float _currentTimeToShoot;
+        private bool _collided;
         
         public override void _Ready()
         {
             _state = EnemyState.Idle;
-            _player = (Player) GetTree().CurrentScene.FindNode(nameof(Player));
+            _player = (Player) GetTree().CurrentScene.GetNode(nameof(Player));
 
-            _bodySprite = GetNode<AnimatedSprite>(BodySpritePath);
+            _bodySprite = GetNode<AnimatedSprite2D>(BodySpritePath);
             _hitDetectionArea = GetNode<Area2D>(HitDetectionAreaPath);
-            _lookingDirectionIndicator = GetNode<Sprite>(LookingDirectionSpritePath);
+            _lookingDirectionIndicator = GetNode<Sprite2D>(LookingDirectionSpritePath);
             _healthBar = GetNode<HealthBar>(HealthBarPath);
             
             _healthBar.SetMaxHealth(Health);
             _currentTimeToShoot = ShootInterval;
 
-            _hitDetectionArea.Connect("area_entered", this, nameof(GotHit));
+            _hitDetectionArea.Connect("area_entered",new Callable(this,nameof(GotHit)));
             SetState(EnemyState.Idle);
         }
 
-        public override void _PhysicsProcess(float delta)
+        public override void _PhysicsProcess(double delta)
         {
             if (_currentTimeToShoot <= 0)
             {
@@ -66,15 +66,15 @@ namespace TwentySecondGameJam2022.Scripts
             if (Position.DistanceTo(_player.GlobalPosition) > MinDistanceToPlayer)
             {
                 SetState(EnemyState.Moving);
-                _velocity = directionToPlayer * Speed;
-                _velocity = MoveAndSlide(_velocity);
+                Velocity = directionToPlayer * Speed;
+                _collided = MoveAndSlide();
             }
             else
             {
                 SetState(EnemyState.Idle);
             }
             
-            _currentTimeToShoot = Mathf.Max(_currentTimeToShoot - delta, 0);
+            _currentTimeToShoot = Mathf.Max(_currentTimeToShoot - (float) delta, 0);
         }
 
         private void SetState(EnemyState state)
@@ -88,7 +88,7 @@ namespace TwentySecondGameJam2022.Scripts
 
         private void ShootBullet()
         {
-            var bullet = (Bullet) Bullet.Instance();
+            var bullet = (Bullet) Bullet.Instantiate();
             GetTree().Root.AddChild(bullet);
             bullet.Position = Position;
             bullet.Init(CollisionLayer, BulletSpeed, BulletMaxRange);

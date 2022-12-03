@@ -1,0 +1,17 @@
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/obj/Debug/20sGameJam2022.csproj.AssemblyReference.cache
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/obj/Debug/20sGameJam2022.GeneratedMSBuildEditorConfig.editorconfig
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/obj/Debug/20sGameJam2022.AssemblyInfoInputs.cache
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/obj/Debug/20sGameJam2022.AssemblyInfo.cs
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/obj/Debug/20sGameJam2022.csproj.CoreCompileInputs.cache
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/bin/Debug/20sGameJam2022.deps.json
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/bin/Debug/20sGameJam2022.runtimeconfig.json
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/bin/Debug/20sGameJam2022.dll
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/bin/Debug/ref/20sGameJam2022.dll
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/bin/Debug/20sGameJam2022.pdb
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/bin/Debug/GodotSharp.dll
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/bin/Debug/GodotSharpEditor.dll
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/obj/Debug/20sGameJam2022.csproj.CopyComplete
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/obj/Debug/20sGameJam2022.dll
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/obj/Debug/ref/20sGameJam2022.dll
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/obj/Debug/20sGameJam2022.pdb
+/Users/christophprenissl/Projects/Godot/20sGameJam2022/.godot/mono/temp/obj/Debug/20sGameJam2022.genruntimeconfig.cache

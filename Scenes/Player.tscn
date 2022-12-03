@@ -1,39 +1,40 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=7 format=3 uid="uid://blvkhlcbroqcd"]
 
-[ext_resource path="res://Art/Sprites/player.png" type="Texture" id=1]
-[ext_resource path="res://Scripts/Player.cs" type="Script" id=2]
-[ext_resource path="res://Scenes/Bullet.tscn" type="PackedScene" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource type="Texture2D" uid="uid://cgyqr1e7n0xoq" path="res://Art/Sprites/player.png" id="1"]
+[ext_resource type="Script" path="res://Scripts/Player.cs" id="2"]
+[ext_resource type="PackedScene" path="res://Scenes/Bullet.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://b8wdn1unvbu3x" path="res://icon.png" id="4"]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id="1"]
 
-[sub_resource type="SpriteFrames" id=2]
-animations = [ {
-"frames": [ ExtResource( 1 ) ],
+[sub_resource type="SpriteFrames" id="2"]
+animations = [{
+"frames": [ExtResource("1")],
 "loop": true,
-"name": "idle",
+"name": &"idle",
 "speed": 5.0
-} ]
+}]
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="CharacterBody2D"]
 unique_name_in_owner = true
 collision_mask = 7
-script = ExtResource( 2 )
+script = ExtResource("2")
 Speed = 350
 DashSpeed = 1350
 DashTime = 0.2
-Bullet = ExtResource( 3 )
+Bullet = ExtResource("3")
 ShootingIndicatorDistance = 40.0
 
-[node name="CollisionShape" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="CollisionShape3D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
 
-[node name="BodySprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 0.08, 0.08 )
-frames = SubResource( 2 )
-animation = "idle"
+[node name="BodySprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.08, 0.08)
+frames = SubResource("2")
+animation = &"idle"
 
-[node name="ShootingIndicatorSprite" type="Sprite" parent="."]
-position = Vector2( -15, -14 )
-scale = Vector2( 0.06, 0.06 )
-texture = ExtResource( 4 )
+[node name="ShootingIndicatorSprite" type="Sprite2D" parent="."]
+position = Vector2(-15, -14)
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("4")

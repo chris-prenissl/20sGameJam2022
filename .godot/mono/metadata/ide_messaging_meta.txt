@@ -1,0 +1,2 @@
+﻿59768
+/Applications/Godot-4.0-beta-7_mono.app/Contents/MacOS/Godot

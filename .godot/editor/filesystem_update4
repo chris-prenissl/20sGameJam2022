@@ -1,0 +1,4 @@
+res://Scenes/Level.tscn
+res://Scripts/Bullet.cs
+res://Scenes/Enemy.tscn
+res://Scenes/Player.tscn

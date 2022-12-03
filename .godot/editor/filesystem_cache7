@@ -1,0 +1,32 @@
+0b7126e0c6e86d3ec295a72f5aa6e0bd
+::res://::1670080062
+default_env.tres::Environment::-1::1669282907::0::1::::<><>::
+icon.png::CompressedTexture2D::4748275597758526871::1668350483::1669282920::1::::<><>::
+README.md::TextFile::-1::1668350483::0::1::::<><>::
+::res://Art/::1668866946
+::res://Art/Sprites/::1669282920
+enemy.png::CompressedTexture2D::7504741217953984876::1668947018::1670080322::1::::<><>::
+enemy_dif.png::CompressedTexture2D::1908884042401443954::1668940808::1669282920::1::::<><>::
+player.png::CompressedTexture2D::5244522698951114720::1668866374::1670080308::1::::<><>::
+::res://Art/Tilesets/::1669282920
+TX Plant.png::CompressedTexture2D::4201387724587672834::1611062332::1669282920::1::::<><>::
+TX Player.png::CompressedTexture2D::4738654070751427075::1611170496::1669282920::1::::<><>::
+TX Props.png::CompressedTexture2D::8617260680548197618::1611430926::1669282920::1::::<><>::
+TX Shadow Plant.png::CompressedTexture2D::2513054949521837030::1610183180::1669282920::1::::<><>::
+TX Shadow.png::CompressedTexture2D::8546018496941056107::1611416952::1669282920::1::::<><>::
+TX Struct.png::CompressedTexture2D::3596432082917213074::1611417648::1669282920::1::::<><>::
+TX Tileset Grass.png::CompressedTexture2D::2972458441963299708::1608904422::1669282920::1::::<><>::
+TX Tileset Stone Ground.png::CompressedTexture2D::3149467840938155912::1605387848::1669282920::1::::<><>::
+TX Tileset Wall.png::CompressedTexture2D::381035712456491698::1611430378::1669282920::1::::<><>::
+::res://Scenes/::1670080226
+Bullet.tscn::PackedScene::-1::1669282907::0::1::::<><>::res://icon.png<>res://Scripts/Bullet.cs
+Enemy.tscn::PackedScene::-1::1669282908::0::1::::<><>::res://Scripts/Enemy.cs<>res://Art/Sprites/enemy.png<>res://Scenes/Bullet.tscn<>res://icon.png<>res://Scenes/HealthBar.tscn
+HealthBar.tscn::PackedScene::-1::1669282908::0::1::::<><>::res://Scripts/HealthBar.cs
+Level.tscn::PackedScene::5099541248499377075::1670080226::0::1::::<><>::res://Scripts/Level.cs<>res://Scenes/Player.tscn<>uid://bil47ro0l8bey<>uid://fotuqrhlushm<>res://Scenes/Enemy.tscn
+Player.tscn::PackedScene::-1::1669282907::0::1::::<><>::res://Art/Sprites/player.png<>res://Scripts/Player.cs<>res://Scenes/Bullet.tscn<>res://icon.png
+::res://Scripts/::1670080224
+Bullet.cs::CSharpScript::-1::1670079575::0::1::::<><>::
+Enemy.cs::CSharpScript::-1::1670077558::0::1::::<><>::
+HealthBar.cs::CSharpScript::-1::1670075626::0::1::::<><>::
+Level.cs::CSharpScript::-1::1669282925::0::1::::<><>::
+Player.cs::CSharpScript::-1::1670080224::0::1::::<><>::
