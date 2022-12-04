@@ -6661,12 +6661,12 @@ tile_set = SubResource("12")
 format = 2
 layer_0/tile_data = PackedInt32Array(851979, 15, 0, 851980, 1, 0, 851981, 65537, 0, 851982, 1, 0, 851983, 1, 0, 851984, 1, 0, 851985, 1, 0, 851986, 1, 0, 851987, 65537, 0, 851988, 1, 0, 851989, 65537, 0, 851990, 1, 0, 851991, 13, 0)
 
+[node name="Enemy" parent="." instance=ExtResource("5")]
+position = Vector2(248, 203)
+
 [node name="Player" parent="." instance=ExtResource("2")]
 unique_name_in_owner = false
 position = Vector2(244, 450)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 current = true
-
-[node name="Enemy" parent="." instance=ExtResource("5")]
-position = Vector2(248, 203)

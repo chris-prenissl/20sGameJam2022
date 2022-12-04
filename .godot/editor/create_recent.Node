@@ -1,0 +1,5 @@
+DirectionalLight2D
+LightOccluder2D
+PointLight2D
+Sprite2D
+ColorRect
